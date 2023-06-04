@@ -1,11 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, StatusBar } from 'react-native'
 import { SplashScreen, Stack } from 'expo-router'
 import {
   useFonts,
   SpaceMono_400Regular,
   SpaceMono_700Bold,
 } from '@expo-google-fonts/space-mono'
+import Header from '../src/components/Header'
 
 const Layout = () => {
   const [hasLoaderFonts] = useFonts({
@@ -18,8 +19,9 @@ const Layout = () => {
   }
 
   return (
-    <View className="flex-1 px-4 pb-2 pt-12">
-      <Text>aaa</Text>
+    <View className="flex-1 bg-secundary px-6 pb-2 pt-11">
+      <StatusBar barStyle="light-content" translucent={true} />
+      <Header />
       <Stack
         screenOptions={{
           headerShown: false,
