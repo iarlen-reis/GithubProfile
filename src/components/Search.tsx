@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons'
 
 const Search = () => {
   return (
-    <View className="relative mt-14 w-full flex-row items-center">
+    <View className="relative mt-5 w-full flex-row items-center">
       <Feather
         name="search"
         color="#0079FF"
