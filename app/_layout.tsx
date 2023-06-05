@@ -28,8 +28,8 @@ const Layout = () => {
           contentStyle: { backgroundColor: 'transparent' },
         }}
       >
-        <Stack.Screen name="index" />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" />
       </Stack>
     </View>
   )
