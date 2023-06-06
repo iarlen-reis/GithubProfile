@@ -1,22 +1,49 @@
 import React from 'react'
-import { View, Image, Text, ActivityIndicator } from 'react-native'
+import {
+  View,
+  Image,
+  Text,
+  ActivityIndicator,
+  TouchableOpacity,
+} from 'react-native'
 
-import { AntDesign, Ionicons, Feather, FontAwesome } from '@expo/vector-icons'
+import {
+  AntDesign,
+  Ionicons,
+  Feather,
+  FontAwesome,
+  MaterialIcons,
+} from '@expo/vector-icons'
 
 import ProfileImage from '../assets/profileImage.png'
 import { useProfileContext } from '../contexts/ProfileContext'
 import { formateData } from '../utils/formateDate'
+import { useFavoriteContext } from '../contexts/FavoriteContext'
 
 const Details = () => {
   const { loading, profile, error } = useProfileContext()
+  const { addToFavorite, favorites } = useFavoriteContext()
+
+  const handleAddFavorite = () => {
+    const data = {
+      name: profile.name,
+      avatar_url: profile.avatar_url,
+      login: profile.login,
+    }
+
+    addToFavorite(data)
+  }
 
   if (loading) return <ActivityIndicator size={40} className="mt-[50%]" />
 
+  const isFavorite =
+    profile && favorites.find((item) => item.login === profile.login)
+
   return (
-    <View className="mt-4  w-full  rounded-2xl bg-primary px-6 py-8 pb-2">
+    <View className="relative  mt-4 w-full rounded-2xl bg-primary  px-6 py-8 pb-2">
       {profile ? (
         <>
-          <View className="w-full flex-row">
+          <View className="w-full flex-row ">
             <View className="mr-5">
               <Image
                 source={{ uri: profile.avatar_url }}
@@ -93,6 +120,20 @@ const Details = () => {
               </Text>
             </View>
           </View>
+          <TouchableOpacity
+            className="absolute right-3 top-2"
+            onPress={handleAddFavorite}
+          >
+            {isFavorite ? (
+              <MaterialIcons name="favorite" size={24} color="#8E0000" />
+            ) : (
+              <MaterialIcons
+                name="favorite-outline"
+                size={24}
+                color="#8E0000"
+              />
+            )}
+          </TouchableOpacity>
         </>
       ) : (
         <View className="items-center justify-center">
