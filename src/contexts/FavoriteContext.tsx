@@ -39,17 +39,18 @@ export const FavoriteProvider: React.FC<IChildren> = ({ children }) => {
     fetchFavorites()
   }, [])
 
-  // useEffect(() => {
-  //   const saveFavorites = async () => {
-  //     try {
-  //       await AsyncStorage.setItem('favorites', JSON.stringify(favorites))
-  //     } catch (error) {
-  //       console.error('Error saving favorites to AsyncStorage:', error)
-  //     }
-  //   }
+  useEffect(() => {
+    const saveFavorites = async () => {
+      try {
+        if (favorites)
+          await AsyncStorage.setItem('favorites', JSON.stringify(favorites))
+      } catch (error) {
+        console.error('Error saving favorites to AsyncStorage:', error)
+      }
+    }
 
-  //   saveFavorites()
-  // }, [favorites])
+    saveFavorites()
+  }, [favorites])
 
   const addToFavorite = (profile: IFavorite) => {
     const itemExists = favorites.some((item) => item.login === profile.login)
