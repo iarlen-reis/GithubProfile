@@ -76,13 +76,13 @@ const Details = () => {
               </Text>
             </View>
             <View className="items-center gap-1">
-              <Text className="font-body text-xs text-white">Followers</Text>
+              <Text className="font-body text-xs text-white">Seguidores</Text>
               <Text className="font-title text-base text-white">
                 {profile.followers}
               </Text>
             </View>
             <View className="items-center gap-1">
-              <Text className="font-body text-xs text-white">Following</Text>
+              <Text className="font-body text-xs text-white">Seguindo</Text>
               <Text className="font-title text-base text-white">
                 {profile.following}
               </Text>

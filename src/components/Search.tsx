@@ -24,7 +24,7 @@ const Search = () => {
         style={{ position: 'absolute', left: 10, zIndex: 5 }}
       />
       <TextInput
-        placeholder="Search Github username..."
+        placeholder="Procure um usuário..."
         className="w-full rounded-2xl bg-primary px-[45] py-[18] font-body text-[12px] text-white"
         placeholderTextColor="#FFF"
         value={search}
