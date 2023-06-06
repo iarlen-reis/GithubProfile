@@ -20,13 +20,10 @@ import { useProfileContext } from '../contexts/ProfileContext'
 import { formateData } from '../utils/formateDate'
 import { useFavoriteContext } from '../contexts/FavoriteContext'
 import { addEllipsis } from '../utils/addEllipsis'
-import { formateName } from '../utils/formateName'
 
 const Details = () => {
   const { loading, profile, error } = useProfileContext()
   const { addToFavorite, favorites } = useFavoriteContext()
-
-  profile.name = formateName(profile.name)
 
   const handleAddFavorite = () => {
     const data = {
@@ -56,7 +53,7 @@ const Details = () => {
               />
             </View>
             <View className="-space-y-1.5">
-              <Text className="font-title text-base text-white">
+              <Text className="font-title text-base capitalize text-white">
                 {profile.name ? profile.name : profile.login}
               </Text>
               <Text className="font-body text-link">@{profile.login}</Text>
@@ -95,7 +92,7 @@ const Details = () => {
           <View className="mt-6 w-full">
             <View className="mb-4 w-full flex-row gap-5">
               <Ionicons name="location-sharp" size={24} color="#FFF" />
-              <Text className="font-body text-sm text-white">
+              <Text className="font-body text-sm capitalize text-white">
                 {profile.location
                   ? profile.location
                   : 'Nenhuma localização definida.'}

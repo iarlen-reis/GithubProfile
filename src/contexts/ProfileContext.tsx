@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react'
 import { api } from '../services/api'
+import { formateName } from '../utils/formateName'
 
 interface IProfile {
   login: string
@@ -42,9 +43,11 @@ export const ProfileProvider = ({ children }: IChildren) => {
     try {
       setLoading(true)
       setError(false)
-      const data = await api.get<IProfile>(`/${name}`)
+      const data = (await api.get<IProfile>(`/${name}`)).data
 
-      setProfile(data.data)
+      data.name = formateName(data.name)
+
+      setProfile(data)
     } catch (error) {
       setError(true)
     } finally {
