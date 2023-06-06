@@ -9,18 +9,20 @@ const Favorites = () => {
 
   return (
     <View className="flex-1 bg-secundary">
-      <Text className="my-5 font-title text-lg text-white">
-        Seus Perfis favoritos
-      </Text>
       {favorites.length > 0 ? (
-        <FlatList
-          data={favorites}
-          keyExtractor={(item) => item.login}
-          renderItem={({ item }) => (
-            <ProfileCard profile={item} key={item.login} />
-          )}
-          showsVerticalScrollIndicator={false}
-        />
+        <>
+          <Text className="my-5 font-title text-lg text-white">
+            Seus Perfis favoritos
+          </Text>
+          <FlatList
+            data={favorites}
+            keyExtractor={(item) => item.login}
+            renderItem={({ item }) => (
+              <ProfileCard profile={item} key={item.login} />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
+        </>
       ) : (
         <View className="items-center justify-center">
           <Fontisto
