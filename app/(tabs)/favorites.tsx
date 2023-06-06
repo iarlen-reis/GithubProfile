@@ -6,11 +6,9 @@ import { useFavoriteContext } from '../../src/contexts/FavoriteContext'
 const Favorites = () => {
   const { favorites } = useFavoriteContext()
 
-  console.log(favorites)
-
   return (
     <View className="flex-1 bg-secundary">
-      <Text className="mt-5 font-title text-lg text-white">
+      <Text className="my-5 font-title text-lg text-white">
         Seus Perfis favoritos
       </Text>
       <FlatList
@@ -19,6 +17,7 @@ const Favorites = () => {
         renderItem={({ item }) => (
           <ProfileCard profile={item} key={item.login} />
         )}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   )

@@ -26,7 +26,7 @@ const ProfileCard = ({ profile }: IProfileCard) => {
     router.push('/home')
   }
   return (
-    <View className="mt-5 w-full flex-row items-center justify-between rounded-md bg-primary p-2">
+    <View className="mt-4 w-full flex-row items-center justify-between rounded-md bg-primary p-2">
       <View className="flex-row items-center">
         <Image
           source={{ uri: profile.avatar_url }}
