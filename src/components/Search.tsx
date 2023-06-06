@@ -12,6 +12,8 @@ const Search = () => {
     if (!search) return
 
     getProfile(search.toLowerCase())
+
+    setSearch('')
   }
   return (
     <View className="relative mt-5 w-full flex-row items-center">
@@ -25,6 +27,7 @@ const Search = () => {
         placeholder="Search Github username..."
         className="w-full rounded-2xl bg-primary px-[45] py-[18] font-body text-[12px] text-white"
         placeholderTextColor="#FFF"
+        value={search}
         onChangeText={(text) => setSearch(text)}
       />
       <TouchableOpacity

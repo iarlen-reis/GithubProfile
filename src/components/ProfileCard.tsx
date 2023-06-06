@@ -3,6 +3,8 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import { Feather } from '@expo/vector-icons'
+import { useProfileContext } from '../contexts/ProfileContext'
+import { useRouter } from 'expo-router'
 
 interface IProfile {
   name: string
@@ -15,6 +17,14 @@ interface IProfileCard {
 }
 
 const ProfileCard = ({ profile }: IProfileCard) => {
+  const { getProfile } = useProfileContext()
+  const router = useRouter()
+
+  const handleProfile = () => {
+    getProfile(profile.login)
+
+    router.push('/home')
+  }
   return (
     <View className="mt-5 w-full flex-row items-center justify-between rounded-md bg-primary p-2">
       <View className="flex-row items-center">
@@ -30,7 +40,10 @@ const ProfileCard = ({ profile }: IProfileCard) => {
           <Text className="font-body text-xs text-white">@{profile.login}</Text>
         </View>
       </View>
-      <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-lg bg-link">
+      <TouchableOpacity
+        className="h-10 w-10 items-center justify-center rounded-lg bg-link"
+        onPress={handleProfile}
+      >
         <Feather name="search" size={30} color="#FFF" />
       </TouchableOpacity>
     </View>
