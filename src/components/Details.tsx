@@ -19,10 +19,14 @@ import ProfileImage from '../assets/profileImage.png'
 import { useProfileContext } from '../contexts/ProfileContext'
 import { formateData } from '../utils/formateDate'
 import { useFavoriteContext } from '../contexts/FavoriteContext'
+import { addEllipsis } from '../utils/addEllipsis'
+import { formateName } from '../utils/formateName'
 
 const Details = () => {
   const { loading, profile, error } = useProfileContext()
   const { addToFavorite, favorites } = useFavoriteContext()
+
+  profile.name = formateName(profile.name)
 
   const handleAddFavorite = () => {
     const data = {
@@ -64,7 +68,7 @@ const Details = () => {
           {profile.bio && (
             <View className="mt-8 w-full">
               <Text className="font-body text-sm text-white">
-                {profile.bio}
+                {addEllipsis(profile.bio)}
               </Text>
             </View>
           )}
