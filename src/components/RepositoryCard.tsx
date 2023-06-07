@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Linking } from 'react-native'
 import React from 'react'
 
 import { FontAwesome, Entypo } from '@expo/vector-icons'
@@ -18,6 +18,10 @@ interface IRepositoryCard {
 }
 
 const RepositoryCard = ({ repository }: IRepositoryCard) => {
+  const handleToRepository = () => {
+    Linking.openURL(repository.html_url)
+  }
+
   return (
     <View className=" mb-5 w-full rounded-lg bg-primary p-3 pb-5">
       <View className="items-center justify-center">
@@ -52,7 +56,10 @@ const RepositoryCard = ({ repository }: IRepositoryCard) => {
         <Text className="font-title text-white">{repository.language}</Text>
       </View>
       <View className="mt-4 items-center justify-center">
-        <TouchableOpacity className="items-center justify-center rounded-md bg-link px-4 py-3">
+        <TouchableOpacity
+          className="items-center justify-center rounded-md bg-link px-4 py-3"
+          onPress={handleToRepository}
+        >
           <Text className="font-body text-xs text-white">Ver repositório</Text>
         </TouchableOpacity>
       </View>
