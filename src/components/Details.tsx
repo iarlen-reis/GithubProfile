@@ -13,6 +13,7 @@ import {
   Feather,
   FontAwesome,
   MaterialIcons,
+  MaterialCommunityIcons,
 } from '@expo/vector-icons'
 
 import ProfileImage from '../assets/profileImage.png'
@@ -20,10 +21,12 @@ import { useProfileContext } from '../contexts/ProfileContext'
 import { formateData } from '../utils/formateDate'
 import { useFavoriteContext } from '../contexts/FavoriteContext'
 import { addEllipsis } from '../utils/addEllipsis'
+import { useRouter } from 'expo-router'
 
 const Details = () => {
   const { loading, profile, error } = useProfileContext()
   const { addToFavorite, favorites } = useFavoriteContext()
+  const router = useRouter()
 
   const handleAddFavorite = () => {
     const data = {
@@ -35,13 +38,20 @@ const Details = () => {
     addToFavorite(data)
   }
 
+  const handleRepositories = () => {
+    router.push({
+      pathname: '/repositories',
+      params: { profile: profile.login },
+    })
+  }
+
   if (loading) return <ActivityIndicator size={40} className="mt-[50%]" />
 
   const isFavorite =
     profile && favorites.find((item) => item.login === profile.login)
 
   return (
-    <View className="relative  mt-4 w-full rounded-2xl bg-primary  px-6 py-8 pb-2">
+    <View className="relative  mt-4 w-full rounded-2xl bg-primary  px-6 py-8 pb-4">
       {profile ? (
         <>
           <View className="w-full flex-row ">
@@ -69,7 +79,7 @@ const Details = () => {
               </Text>
             </View>
           )}
-          <View className="mt-10 w-full flex-row items-center justify-center space-x-7 rounded-xl bg-secundary px-4 py-5">
+          <View className="mt-6 w-full flex-row items-center justify-center space-x-7 rounded-xl bg-secundary px-4 py-5">
             <View className="items-center gap-1">
               <Text className="font-body text-xs text-white">Repos</Text>
               <Text className="font-title text-base text-white">
@@ -89,7 +99,7 @@ const Details = () => {
               </Text>
             </View>
           </View>
-          <View className="mt-6 w-full">
+          <View className="mt-4 w-full">
             <View className="mb-4 w-full flex-row gap-5">
               <Ionicons name="location-sharp" size={24} color="#FFF" />
               <Text className="font-body text-sm capitalize text-white">
@@ -120,6 +130,17 @@ const Details = () => {
                   : 'Nenhuma empresa vinculada.'}
               </Text>
             </View>
+            <TouchableOpacity
+              className="mt-2 flex-row items-center justify-center  rounded-lg bg-link p-2"
+              onPress={handleRepositories}
+            >
+              <MaterialCommunityIcons
+                name="source-repository"
+                size={24}
+                color="#FFF"
+              />
+              <Text className="ml-1 font-body text-white">Repositórios</Text>
+            </TouchableOpacity>
           </View>
           <TouchableOpacity
             className="absolute right-3 top-2"
