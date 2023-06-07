@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator } from 'react-native'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useLocalSearchParams } from 'expo-router'
 import RepositoryCard from '../../src/components/RepositoryCard'
@@ -7,12 +7,8 @@ import { useFetchRepos } from '../../src/hooks/useFetchRepos'
 import { FlatList } from 'react-native-gesture-handler'
 
 const Repositories = () => {
-  const { getRepos, repos, loading } = useFetchRepos()
   const { profile } = useLocalSearchParams()
-
-  useEffect(() => {
-    getRepos(profile.toString())
-  }, [profile])
+  const { repos, loading } = useFetchRepos(profile.toString())
 
   return (
     <View className="flex-1 bg-secundary">
@@ -26,7 +22,6 @@ const Repositories = () => {
             keyExtractor={(repo) => String(repo.id)}
             renderItem={({ item }) => <RepositoryCard repository={item} />}
             showsVerticalScrollIndicator={false}
-            initialNumToRender={repos.length}
           />
         </>
       ) : (
