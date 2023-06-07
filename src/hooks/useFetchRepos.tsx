@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { api } from '../services/api'
+import { useQuery } from '@tanstack/react-query'
 
 interface IRepo {
   id: number
@@ -13,25 +13,20 @@ interface IRepo {
 
 interface IUseFetchRepos {
   repos: IRepo[]
-  getRepos: (profile: string) => void
   loading: boolean
 }
 
-export const useFetchRepos = (): IUseFetchRepos => {
-  const [repos, setRepos] = useState<IRepo[]>()
-  const [loading, setLoading] = useState(true)
+const fetcherRepos = async (profile: string) => {
+  const response = await api.get<IRepo[]>(`/${profile}/repos`)
 
-  const getRepos = async (profile: string) => {
-    try {
-      setLoading(true)
-      const data = (await api.get<IRepo[]>(`/${profile}/repos`)).data
+  return response.data
+}
 
-      setRepos(data)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
-  }
-  return { getRepos, repos, loading }
+export const useFetchRepos = (profile: string): IUseFetchRepos => {
+  const { data: repos, isLoading: loading } = useQuery(
+    ['repos', profile],
+    () => fetcherRepos(profile),
+    { staleTime: 600000 },
+  )
+  return { repos, loading }
 }
