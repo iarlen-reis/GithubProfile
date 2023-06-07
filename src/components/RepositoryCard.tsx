@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Linking } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 
 import { FontAwesome, Entypo } from '@expo/vector-icons'
 
@@ -67,4 +67,4 @@ const RepositoryCard = ({ repository }: IRepositoryCard) => {
   )
 }
 
-export default RepositoryCard
+export default memo(RepositoryCard)
