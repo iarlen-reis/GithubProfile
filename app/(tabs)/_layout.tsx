@@ -37,6 +37,7 @@ const TabLayout = () => {
                 ),
               }}
             />
+            <Tabs.Screen name="repositories" options={{ href: null }} />
           </Tabs>
         </FavoriteProvider>
       </ProfileProvider>
