@@ -42,7 +42,6 @@ export const ProfileProvider = ({ children }: IChildren) => {
   const getProfile = async (name: string) => {
     try {
       setLoading(true)
-      setError(false)
       const data = (await api.get<IProfile>(`/${name}`)).data
 
       data.name = formateName(data.name)
@@ -50,9 +49,9 @@ export const ProfileProvider = ({ children }: IChildren) => {
       setProfile(data)
     } catch (error) {
       setError(true)
-      console.log(error)
     } finally {
       setLoading(false)
+      setError(false)
     }
   }
 
