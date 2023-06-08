@@ -29,13 +29,18 @@ const Repositories = () => {
   }
 
   if (loading)
-    return <ActivityIndicator size={40} className="flex-1 bg-secundary" />
+    return (
+      <ActivityIndicator
+        size={40}
+        className="flex-1 bg-backgroundLight dark:bg-secundary"
+      />
+    )
 
   return (
-    <View className="flex-1 bg-secundary">
+    <View className="flex-1 bg-backgroundLight px-6 dark:bg-secundary">
       {repos.length > 0 ? (
         <>
-          <Text className="my-5 font-title text-base text-white">
+          <Text className="my-5 font-title text-base text-titleLight dark:text-white">
             Repositórios de {profile}
           </Text>
           <VirtualizedList
