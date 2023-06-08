@@ -30,6 +30,8 @@ export const FavoriteProvider: React.FC<IChildren> = ({ children }) => {
         const storedFavorites = await AsyncStorage.getItem('favorites')
         if (storedFavorites !== null) {
           setFavorites(JSON.parse(storedFavorites))
+        } else {
+          setFavorites([])
         }
       } catch (error) {
         console.error('Error retrieving favorites from AsyncStorage:', error)
