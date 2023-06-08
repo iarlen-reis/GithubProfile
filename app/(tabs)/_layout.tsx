@@ -4,13 +4,18 @@ import { Feather } from '@expo/vector-icons'
 import { FavoriteProvider } from '../../src/contexts/FavoriteContext'
 import { ProfileProvider } from '../../src/contexts/ProfileContext'
 
+import { useColorScheme } from 'nativewind'
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const TabLayout = () => {
   const queryClient = new QueryClient()
+  const { colorScheme } = useColorScheme()
+
+  const color = colorScheme === 'dark' ? '#141D2F' : '#F6F8FF'
 
   return (
-    <View className="flex-1 bg-secundary">
+    <View className="flex-1 bg-backgroundLight dark:bg-secundary">
       <QueryClientProvider client={queryClient}>
         <ProfileProvider>
           <FavoriteProvider>
@@ -18,10 +23,12 @@ const TabLayout = () => {
               screenOptions={{
                 headerShown: false,
                 tabBarActiveBackgroundColor: 'transparent',
-                tabBarItemStyle: { backgroundColor: '#141D2F' },
+                tabBarItemStyle: {
+                  backgroundColor: color,
+                },
                 tabBarStyle: {
-                  backgroundColor: 'transparent',
-                  borderTopColor: '#141D2F',
+                  backgroundColor: color,
+                  borderTopColor: color,
                 },
                 tabBarShowLabel: false,
               }}

@@ -21,7 +21,7 @@ const Layout = () => {
   }
 
   return (
-    <View className="flex-1 bg-secundary px-6 pb-2 pt-11">
+    <View className="flex-1 bg-backgroundLight  pt-11 dark:bg-secundary">
       <StatusBar barStyle="light-content" translucent={true} />
       <Header />
       <Stack
