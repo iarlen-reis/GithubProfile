@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import {
   View,
   Image,
@@ -165,7 +165,7 @@ const Details = () => {
             className="h-[70px] w-[70px] rounded-[35px]"
           />
           <Text className="mt-5 font-title text-white">
-            Pesquise por um usuário.
+            Pesquise por um usuário!
           </Text>
         </View>
       )}
@@ -178,4 +178,4 @@ const Details = () => {
   )
 }
 
-export default memo(Details)
+export default Details
