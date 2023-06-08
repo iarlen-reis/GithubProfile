@@ -4,9 +4,14 @@ import { Feather } from '@expo/vector-icons'
 
 import { useProfileContext } from '../contexts/ProfileContext'
 
+import { useColorScheme } from 'nativewind'
+
 const Search = () => {
   const [search, setSearch] = useState<string>('')
   const { getProfile } = useProfileContext()
+  const { colorScheme } = useColorScheme()
+
+  const color = colorScheme === 'dark' ? '#FFF' : '#4B6A9B'
 
   const handleProfile = () => {
     if (!search) return
@@ -19,14 +24,14 @@ const Search = () => {
     <View className="relative mt-5 w-full flex-row items-center">
       <Feather
         name="search"
-        color="#0079FF"
+        color={color}
         size={30}
         style={{ position: 'absolute', left: 10, zIndex: 5 }}
       />
       <TextInput
         placeholder="Procure um usuário..."
-        className="w-full rounded-2xl bg-primary px-[45] py-[18] font-body text-[12px] text-white"
-        placeholderTextColor="#FFF"
+        className="w-full rounded-2xl bg-inputLight px-[45] py-[18] font-body text-[12px] text-textLight dark:bg-primary dark:text-white"
+        placeholderTextColor={color}
         value={search}
         onChangeText={(text) => setSearch(text)}
       />
