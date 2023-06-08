@@ -6,6 +6,8 @@ import {
   SpaceMono_400Regular,
   SpaceMono_700Bold,
 } from '@expo-google-fonts/space-mono'
+import Toast from 'react-native-toast-message'
+
 import Header from '../src/components/Header'
 
 const Layout = () => {
@@ -31,6 +33,7 @@ const Layout = () => {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="index" />
       </Stack>
+      <Toast />
     </View>
   )
 }
