@@ -1,14 +1,19 @@
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, VirtualizedList } from 'react-native'
 import React from 'react'
 
 import { useLocalSearchParams } from 'expo-router'
 import RepositoryCard from '../../src/components/RepositoryCard'
 import { useFetchRepos } from '../../src/hooks/useFetchRepos'
-import { FlatList } from 'react-native-gesture-handler'
 
 const Repositories = () => {
   const { profile } = useLocalSearchParams()
   const { repos, loading } = useFetchRepos(profile.toString())
+
+  const getItemCount = () => repos.length
+
+  const getItem = (data, index) => data[index]
+
+  const renderItem = ({ item }) => <RepositoryCard repository={item} />
 
   return (
     <View className="flex-1 bg-secundary">
@@ -17,11 +22,13 @@ const Repositories = () => {
           <Text className="my-5 font-title text-base text-white">
             Repositórios de {profile}
           </Text>
-          <FlatList
+          <VirtualizedList
             data={repos}
-            keyExtractor={(repo) => String(repo.id)}
-            renderItem={({ item }) => <RepositoryCard repository={item} />}
+            getItemCount={getItemCount}
+            getItem={getItem}
+            renderItem={renderItem}
             showsVerticalScrollIndicator={false}
+            initialNumToRender={5}
           />
         </>
       ) : (
