@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 
 import { useProfileContext } from '../contexts/ProfileContext'
@@ -13,16 +13,20 @@ const Details = () => {
 
   if (loading) return <ActivityIndicator size={40} className="mt-[50%]" />
 
-  if (error)
-    return Toast.show({
-      type: 'error',
-      text1: 'Error',
-      text2: 'Usuário não encontrado.',
-    })
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (error) {
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: 'Usuário não encontrado.',
+      })
+    }
+  }, [error])
 
   return (
     <View className="relative  mt-4 w-full rounded-2xl bg-primary  px-6 py-8 pb-4">
-      {profile && profile ? <Profile profile={profile} /> : <DetailsDefault />}
+      {profile ? <Profile profile={profile} /> : <DetailsDefault />}
     </View>
   )
 }
