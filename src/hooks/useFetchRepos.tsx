@@ -26,7 +26,7 @@ export const useFetchRepos = (profile: string): IUseFetchRepos => {
   const { data: repos, isLoading: loading } = useQuery(
     ['repos', profile],
     () => fetcherRepos(profile),
-    { staleTime: 600000 },
+    { staleTime: 60000 * 60 * 10 },
   )
   return { repos, loading }
 }
