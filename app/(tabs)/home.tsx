@@ -5,7 +5,7 @@ import Details from '../../src/components/Details'
 
 const Home = () => {
   return (
-    <View className="flex-1 bg-secundary">
+    <View className="flex-1 bg-backgroundLight px-6 dark:bg-secundary ">
       <Search />
       <Details />
     </View>
