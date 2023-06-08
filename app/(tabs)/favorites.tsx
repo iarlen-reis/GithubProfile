@@ -8,10 +8,10 @@ const Favorites = () => {
   const { favorites } = useFavoriteContext()
 
   return (
-    <View className="flex-1 bg-secundary">
+    <View className="flex-1 bg-backgroundLight px-6 dark:bg-secundary">
       {favorites.length > 0 ? (
         <>
-          <Text className="my-5 font-title text-lg text-white">
+          <Text className="my-5 font-title text-lg text-linkLight dark:text-white">
             Seus Perfis favoritos
           </Text>
           <FlatList

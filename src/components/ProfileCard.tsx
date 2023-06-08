@@ -26,7 +26,7 @@ const ProfileCard = ({ profile }: IProfileCard) => {
     router.push('/home')
   }
   return (
-    <View className="mt-4 w-full flex-row items-center justify-between rounded-md bg-primary p-2">
+    <View className="mt-4 w-full flex-row items-center justify-between rounded-md bg-white p-2 dark:bg-primary">
       <View className="flex-row items-center">
         <Image
           source={{ uri: profile.avatar_url }}
@@ -34,10 +34,12 @@ const ProfileCard = ({ profile }: IProfileCard) => {
           className="mr-2 h-[50px] w-[50px] rounded-[25px]"
         />
         <View>
-          <Text className="font-title text-sm text-white">
+          <Text className="font-title text-sm text-linkLight dark:text-white">
             {profile.name ? profile.name : profile.login}
           </Text>
-          <Text className="font-body text-xs text-white">@{profile.login}</Text>
+          <Text className="font-body text-xs text-link dark:text-white">
+            @{profile.login}
+          </Text>
         </View>
       </View>
       <TouchableOpacity
