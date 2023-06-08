@@ -5,6 +5,14 @@
       "bundler": "metro"
     },
     "name": "github-profile",
-    "slug": "github-profile"
+    "slug": "github-profile",
+    "extra": {
+      "eas": {
+        "projectId": "cfdf9f63-cb11-4f23-a788-9b7a64a8bbdf"
+      }
+    },
+    "android": {
+      "package": "com.github.profile"
+    }
   }
 }
