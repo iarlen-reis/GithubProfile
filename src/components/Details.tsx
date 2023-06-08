@@ -25,7 +25,7 @@ const Details = () => {
   }, [error])
 
   return (
-    <View className="relative  mt-4 w-full rounded-2xl bg-primary  px-6 py-8 pb-4">
+    <View className="relative  mt-4 w-full rounded-2xl bg-inputLight px-6  py-8 pb-4 dark:bg-primary">
       {profile ? <Profile profile={profile} /> : <DetailsDefault />}
     </View>
   )

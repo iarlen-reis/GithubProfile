@@ -4,6 +4,7 @@ import { addEllipsis } from '../utils/addEllipsis'
 import { formateData } from '../utils/formateDate'
 import { useRouter } from 'expo-router'
 import { useFavoriteContext } from '../contexts/FavoriteContext'
+import { useColorScheme } from 'nativewind'
 
 import {
   AntDesign,
@@ -36,6 +37,7 @@ interface IProfileProps {
 const Profile = ({ profile }: IProfileProps) => {
   const router = useRouter()
   const { addToFavorite, favorites } = useFavoriteContext()
+  const { colorScheme } = useColorScheme()
 
   const handleAddFavorite = () => {
     const data = {
@@ -54,12 +56,14 @@ const Profile = ({ profile }: IProfileProps) => {
     })
   }
 
+  const colorInfo = colorScheme === 'dark' ? '#FFF' : '#4B6A9B'
+
   const isFavorite =
     profile && favorites.find((item) => item.login === profile.login)
 
   return (
     <View>
-      <View className="w-full flex-row ">
+      <View className="w-full flex-row">
         <View className="mr-5">
           <Image
             source={{ uri: profile.avatar_url }}
@@ -67,69 +71,75 @@ const Profile = ({ profile }: IProfileProps) => {
             className="h-[70px] w-[70px] rounded-[35px]"
           />
         </View>
-        <View className="-space-y-1.5">
-          <Text className="font-title text-base capitalize text-white">
+        <View className="space-y-1.5">
+          <Text className="font-title text-base capitalize text-titleLight dark:text-white">
             {profile.name ? profile.name : profile.login}
           </Text>
           <Text className="font-body text-link">@{profile.login}</Text>
-          <Text className="font-body text-sm text-white">
+          <Text className="font-body text-sm text-linkLight dark:text-white">
             Entrou {formateData(profile.created_at)}
           </Text>
         </View>
       </View>
       {profile.bio && (
         <View className="mt-8 w-full">
-          <Text className="font-body text-sm text-white">
+          <Text className="text-center font-body text-sm text-linkLight dark:text-white">
             {addEllipsis(profile.bio)}
           </Text>
         </View>
       )}
-      <View className="mt-6 w-full flex-row items-center justify-center space-x-7 rounded-xl bg-secundary px-4 py-5">
-        <View className="items-center gap-1">
-          <Text className="font-body text-xs text-white">Repos</Text>
-          <Text className="font-title text-base text-white">
+      <View className="mt-6 w-full flex-row items-center justify-center rounded-xl bg-backgroundLight p-5 dark:bg-secundary">
+        <View className="mr-4 items-center gap-1">
+          <Text className="font-body text-xs text-linkLight dark:text-white">
+            Repos
+          </Text>
+          <Text className="font-title text-base text-titleLight dark:text-white">
             {profile.public_repos}
           </Text>
         </View>
-        <View className="items-center gap-1">
-          <Text className="font-body text-xs text-white">Seguidores</Text>
-          <Text className="font-title text-base text-white">
+        <View className="mr-4 items-center gap-1">
+          <Text className="font-body text-xs text-linkLight dark:text-white">
+            Seguidores
+          </Text>
+          <Text className="font-title text-base text-titleLight dark:text-white">
             {profile.followers}
           </Text>
         </View>
         <View className="items-center gap-1">
-          <Text className="font-body text-xs text-white">Seguindo</Text>
-          <Text className="font-title text-base text-white">
+          <Text className="font-body text-xs text-linkLight dark:text-white">
+            Seguindo
+          </Text>
+          <Text className="font-title text-base text-titleLight dark:text-white">
             {profile.following}
           </Text>
         </View>
       </View>
       <View className="mt-4 w-full">
         <View className="mb-4 w-full flex-row gap-5">
-          <Ionicons name="location-sharp" size={24} color="#FFF" />
-          <Text className="font-body text-sm capitalize text-white">
+          <Ionicons name="location-sharp" size={24} color={colorInfo} />
+          <Text className="font-body text-sm capitalize text-linkLight dark:text-white">
             {profile.location
               ? profile.location
               : 'Nenhuma localização definida.'}
           </Text>
         </View>
         <View className="mb-4 w-full flex-row gap-5">
-          <Feather name="link" size={24} color="#FFF" />
-          <Text className="w-full font-body text-xs text-white">
+          <Feather name="link" size={24} color={colorInfo} />
+          <Text className="w-full font-body text-xs text-linkLight dark:text-white">
             {profile.blog ? profile.blog : 'Nenhum site definido.'}
           </Text>
         </View>
         <View className="mb-4 flex-row gap-5">
-          <AntDesign name="twitter" size={24} color="#FFF" />
-          <Text className="font-body text-sm text-white">
+          <AntDesign name="twitter" size={24} color={colorInfo} />
+          <Text className="font-body text-sm text-linkLight dark:text-white">
             {profile.twitter_username
               ? profile.twitter_username
               : 'Nenhum twitter vinculado.'}
           </Text>
         </View>
         <View className="mb-4 flex-row gap-5">
-          <FontAwesome name="building-o" size={24} color="#FFF" />
-          <Text className="font-body text-sm text-white">
+          <FontAwesome name="building-o" size={24} color={colorInfo} />
+          <Text className="font-body text-sm text-linkLight dark:text-white">
             {profile.company ? profile.company : 'Nenhuma empresa vinculada.'}
           </Text>
         </View>
