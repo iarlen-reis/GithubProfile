@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import {
   View,
   Image,
@@ -178,4 +178,4 @@ const Details = () => {
   )
 }
 
-export default Details
+export default memo(Details)
