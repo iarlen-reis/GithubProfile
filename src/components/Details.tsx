@@ -52,7 +52,7 @@ const Details = () => {
 
   return (
     <View className="relative  mt-4 w-full rounded-2xl bg-primary  px-6 py-8 pb-4">
-      {profile ? (
+      {profile && profile ? (
         <>
           <View className="w-full flex-row ">
             <View className="mr-5">

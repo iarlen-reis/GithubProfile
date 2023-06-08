@@ -50,6 +50,7 @@ export const ProfileProvider = ({ children }: IChildren) => {
       setProfile(data)
     } catch (error) {
       setError(true)
+      console.log(error)
     } finally {
       setLoading(false)
     }
