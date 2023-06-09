@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router'
-import { View } from 'react-native'
+import { View, StatusBar } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import { FavoriteProvider } from '../../src/contexts/FavoriteContext'
 import { ProfileProvider } from '../../src/contexts/ProfileContext'
@@ -17,6 +17,11 @@ const TabLayout = () => {
 
   return (
     <View className="flex-1 bg-backgroundLight dark:bg-secundary">
+      <StatusBar
+        backgroundColor="transparent"
+        translucent={true}
+        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+      />
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
           <ProfileProvider>
