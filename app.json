@@ -5,8 +5,14 @@
     "web": {
       "bundler": "metro"
     },
+    "icon": "./src/assets/Icone.png",
     "name": "devfinder",
     "slug": "github-profile",
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "center",
+      "backgroundColor": "#141D2F"
+    },
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": [
