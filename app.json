@@ -1,10 +1,11 @@
 {
   "expo": {
     "scheme": "acme",
+    "userInterfaceStyle": "automatic",
     "web": {
       "bundler": "metro"
     },
-    "name": "github-profile",
+    "name": "devfinder",
     "slug": "github-profile",
     "packagerOpts": {
       "config": "metro.config.js",
@@ -24,6 +25,11 @@
     },
     "android": {
       "package": "com.github.profile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fd170198-2d64-4133-b2df-d45c743f02e3"
+      }
     }
   }
 }
