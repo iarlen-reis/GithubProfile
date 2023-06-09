@@ -31,7 +31,7 @@ const Favorites = () => {
             color="#8E0000"
             style={{ marginTop: '50%' }}
           />
-          <Text className="mt-5 text-center font-title text-base text-white">
+          <Text className="mt-5 text-center font-title text-base text-linkLight dark:text-white">
             Nenhum perfil adicionado aos favoritos.
           </Text>
         </View>

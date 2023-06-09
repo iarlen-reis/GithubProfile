@@ -1,10 +1,14 @@
 import React from 'react'
-import { View, Text, Switch } from 'react-native'
+import { View, Text } from 'react-native'
 import { Feather, Ionicons } from '@expo/vector-icons'
 import { useColorScheme } from 'nativewind'
 
 const Header = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme()
+
+  const handleTheme = () => {
+    toggleColorScheme()
+  }
 
   return (
     <View className="flex-row items-center justify-between px-6 ">
@@ -12,11 +16,10 @@ const Header = () => {
         devfinder
       </Text>
       <View className="flex-row items-center justify-between gap-4">
-        <Switch
-          value={colorScheme === 'dark'}
-          onValueChange={toggleColorScheme}
-        />
-        <Text className="font-body text-textLight dark:text-white">
+        <Text
+          className="font-body text-textLight dark:text-white"
+          onPress={handleTheme}
+        >
           {colorScheme === 'dark' ? 'LIGHT' : 'DARK'}
         </Text>
         {colorScheme === 'dark' ? (
