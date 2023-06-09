@@ -1,5 +1,8 @@
 {
   "expo": {
+    "androidNavigationBar": {
+      "visible": "immersive"
+    },
     "scheme": "acme",
     "userInterfaceStyle": "automatic",
     "web": {
