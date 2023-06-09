@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import { Feather, Ionicons } from '@expo/vector-icons'
 import { useColorScheme } from 'nativewind'
 
@@ -15,11 +15,11 @@ const Header = () => {
       <Text className="font-title text-2xl text-textLight dark:text-white">
         devfinder
       </Text>
-      <View className="flex-row items-center justify-between gap-4">
-        <Text
-          className="font-body text-textLight dark:text-white"
-          onPress={handleTheme}
-        >
+      <Pressable
+        className="flex-row items-center justify-between gap-4"
+        onPress={handleTheme}
+      >
+        <Text className="font-body text-textLight dark:text-white">
           {colorScheme === 'dark' ? 'LIGHT' : 'DARK'}
         </Text>
         {colorScheme === 'dark' ? (
@@ -27,7 +27,7 @@ const Header = () => {
         ) : (
           <Ionicons name="moon" size={24} color="#4B6A9B" />
         )}
-      </View>
+      </Pressable>
     </View>
   )
 }

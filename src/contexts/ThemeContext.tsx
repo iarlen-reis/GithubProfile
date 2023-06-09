@@ -22,7 +22,6 @@ export const ThemeProvider = ({ children }: IChildren) => {
 
       if (themeSaved !== null) {
         setColorScheme(themeSaved as ColorSchemeSystem)
-        console.log(themeSaved)
       } else {
         setColorScheme('light')
       }
