@@ -1,5 +1,5 @@
 # Devfinder
-
+### <img src="./src/assets/github.jpg" alt="github image">
 <p>
   Devfinder foi um desafio do <a href="https://www.frontendmentor.io/">Frontend Mentor</a>, onde
   devemos construir uma aplicação baseada no layout do <a href="https://www.figma.com/file/vkOOTqx4EmCy097dTvmIbZ/github-user-search-app?type=design&node-id=0%3A1&t=lWLpfANyhktirJN7-1">figma</a> proposto por eles.</a>. O projeto foi desenvolvido para
